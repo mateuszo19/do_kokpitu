@@ -26,7 +26,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-            <div className="basis-7/12 h-full bg-gray-200 rounded-tl-lg rounded-bl-lg">
+            <div className="basis-7/12 bg-[url('/images/login.jpg')] bg-cover h-full bg-gray-200 rounded-tl-lg rounded-bl-lg">
 
             </div>
         </section>
