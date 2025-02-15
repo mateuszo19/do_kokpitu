@@ -1,9 +1,14 @@
 import {Button, TextField} from "@mui/material";
 import Link from "next/link";
+import Image from 'next/image'
 
 const Login = () => {
     return (
         <section className="Login flex w-full h-full">
+            <div className="absolute flex flex-col top-4 left-4">
+                <Image src="/icon/DoKokpitu.svg" className='text-primary' alt="Logo" width={64} height={64} />
+                <p className='text-sm font-semibold text-primary font-roboto'>DoKokpitu</p>
+            </div>
             <div className="basis-5/12 h-full flex items-center justify-center">
                 <div className="flex w-[400px] flex-col gap-12">
                     <div className="flex items-center text-sm gap-2">
@@ -17,7 +22,9 @@ const Login = () => {
                         <TextField id="outlined-basic" label="Hasło" variant="outlined" />
                     </div>
                     <div className='flex justify-end'>
-                        <Button variant="contained">Zaloguj</Button>
+                        <Link href="/dashboard">
+                            <Button variant="contained">Zaloguj</Button>
+                        </Link>
                     </div>
                     <div className="flex items-center justify-center">
                         <Link href="/logbook">
