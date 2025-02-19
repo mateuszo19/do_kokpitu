@@ -12,7 +12,7 @@ export default {
         roboto: ["Roboto", "sans-serif"],
       },
       colors: {
-        background: '#ededed',
+        background: '#F5F5F5',
         primary: '#003b5c'
       },
     },

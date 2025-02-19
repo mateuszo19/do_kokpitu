@@ -26,11 +26,11 @@ export default function RootLayout({
     <body
         className={roboto.variable + ' h-screen w-screen'}
     >
-        <AppRouterCacheProvider
-            options={{ key: 'css'}}
-        >
-            {children}
-        </AppRouterCacheProvider>
+            <AppRouterCacheProvider
+                options={{ key: 'css'}}
+            >
+                {children}
+            </AppRouterCacheProvider>
     </body>
     </html>
   );

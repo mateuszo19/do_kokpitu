@@ -1,8 +1,19 @@
 "use client"
 
-import {Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow} from "@mui/material";
+import {
+    Button,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TablePagination,
+    TableRow,
+    TextField
+} from "@mui/material";
 import Paper from '@mui/material/Paper';
 import {useState} from "react";
+import AddFlight from "@/components/AddFlight/AddFlight";
 
 interface Column {
     id: 'id' | 'plane' | 'startDate' | 'startPlace' | 'startEngineOperatingHours' | 'endDate' | 'endPlace' | 'endEngineOperatingHours';
@@ -105,15 +116,13 @@ const renderEngineOperatingHours = (value: number) => {
     );
 };
 
-
-
 const rows = [
     createData(1, 'Piper P28 Warrior (SP-MZT)', '12:30 03-02-2025', 'POZ', 12.4, '12:30 03-02-2025', 'POZ', 12.6),
     createData(1, 'Piper P28 Warrior (SP-MZT)', '12:30 03-02-2025', 'POZ', 1122.4, '12:30 03-02-2025', 'POZ', 1127.6),
 ];
 
 export default function LogBook() {
-
+    const [ addLogPopUp, setAddLogPopUp ] = useState<boolean>(true);
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
 
@@ -127,11 +136,23 @@ export default function LogBook() {
     };
 
     return (
-        <div className="">
-            <div>
+        <div className="flex flex-col gap-8">
+            <div className='flex items-center'>
                 <h1 className='text-primary text-3xl'>LogBook</h1>
+
             </div>
-            <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+            <div className='flex items-center gap-8'>
+                <div className='rounded-xl bg-white px-8 py-4 shadow'>
+                    <TextField variant="outlined" size="small" label="Wyszukaj lot" id="fullWidth" />
+                </div>
+                <div className='rounded-xl bg-white px-8 py-4 shadow'>
+                    <Button
+                        onClick={() => {setAddLogPopUp(true)}}
+                        variant="contained"
+                        color="success">Dodaj lot</Button>
+                </div>
+            </div>
+            <Paper sx={{ width: '100%', overflow: 'hidden', borderRadius: '12px' }}>
                 <TableContainer sx={{ maxHeight: 440 }}>
                     <Table stickyHeader aria-label="sticky table">
                         <TableHead>
@@ -192,7 +213,9 @@ export default function LogBook() {
                     onRowsPerPageChange={handleChangeRowsPerPage}
                 />
             </Paper>
-
+            {addLogPopUp && (
+                <AddFlight setAddLogPopUp={setAddLogPopUp} addLogPopUp={addLogPopUp} />
+            )}
         </div>
     );
 }
